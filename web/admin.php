@@ -4,6 +4,9 @@
  * SENSOR DASHBOARD - ADMIN PANEL
  * ========================================
  * 
+ 
+ 
+ 
  * Features:
  * ✅ Sensor-Verwaltung (hinzufügen, bearbeiten, löschen)
  * ✅ Kategorie-Verwaltung und Sortierung
