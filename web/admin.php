@@ -20,7 +20,7 @@ session_start();
 header('Content-Type: text/html; charset=utf-8');
 
 // Admin-Passwort
-$admin_password = "admin123";
+$admin_password = "yourAdminPassword";
 
 // Login verarbeiten
 if(isset($_POST['login'])) {
