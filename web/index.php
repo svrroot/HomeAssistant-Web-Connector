@@ -5,8 +5,9 @@ mb_internal_encoding('UTF-8');
 mb_http_output('UTF-8');
 ini_set('default_charset', 'utf-8');
 
-$ha_url = "YourHomeAssistantIP:PORT/api/states";
-$ha_token = "HomeASSISTANT-API-KEY "
+$ha_url = "http://10.11.12.33:8123/api/states";
+$ha_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhZjQ4MTBlNWYxZjY0NmM5OThlYTIxZjNiMjJhYTNhYyIsImlhdCI6MTc1NDI5NDg4MCwiZXhwIjoyMDY5NjU0ODgwfQ.k1I56BrKB5fnV-1lfIwgD3g7kXe4nrwNnp6vIFzmbSI";
+
 // Check if this is an AJAX request for a single sensor
 if (isset($_GET['ajax']) && isset($_GET['entity_id'])) {
     header('Content-Type: application/json; charset=utf-8');
@@ -85,7 +86,7 @@ $language = isset($_GET['lang']) ? $_GET['lang'] : 'de';
 
 $texts = [
     'de' => [
-        'title' => 'Home Assistant Dashboard',
+        'title' => 'HomeAssistant Sensor Connector',
         'refresh_all' => 'Alle aktualisieren',
         'last_updated' => 'Zuletzt aktualisiert',
         'light_mode' => 'Heller Modus',
@@ -662,5 +663,267 @@ if (!empty($category_order)) {
         // Auto-refresh every 30 seconds
         setInterval(refreshAllSensors, 30000);
     </script>
+
+    <!-- ========================================
+         FOOTER - URHEBERRECHT & LIZENZ
+         ======================================== -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="copyright">
+                    <i class="fas fa-code"></i>
+                    <span>Entwickelt von <strong>Roman Poeller-Six</strong></span>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-item"><i class="fab fa-php"></i> PHP</span>
+                    <span class="tech-item"><i class="fab fa-js"></i> JavaScript</span>
+                    <span class="tech-item"><i class="fas fa-home"></i> Home Assistant API</span>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <div class="license-info">
+                    <i class="fab fa-osi"></i>
+                    <span><strong>Open Source</strong> - MIT Lizenz</span>
+                </div>
+                <div class="version-info">
+                    <i class="fas fa-tag"></i>
+                    <span>Version 1.0.0 - <?php echo date('Y'); ?></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <a href="https://github.com/svrroot/svrroot-php-HomeAssistant-Dashboard" target="_blank" class="footer-link">
+                <i class="fab fa-github"></i> Source Code
+            </a>
+            <a href="admin.php" class="footer-link">
+                <i class="fas fa-cog"></i> Administration
+            </a>
+            <a href="#" onclick="showLicenseModal()" class="footer-link">
+                <i class="fas fa-file-contract"></i> Lizenz
+            </a>
+        </div>
+    </footer>
+
+    <!-- Lizenz Modal -->
+    <div id="licenseModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeLicenseModal()">&times;</span>
+            <h2><i class="fab fa-osi"></i> MIT Open Source Lizenz</h2>
+            <div class="license-text">
+                <p><strong>Home Assistant Sensor Connector</strong></p>
+                <p>Copyright (c) <?php echo date('Y'); ?> Roman Poeller-Six</p>
+                
+                <p>Hiermit wird unentgeltlich jeder Person, die eine Kopie der Software und der zugehörigen Dokumentationen (die "Software") erhält, die Erlaubnis erteilt, sie uneingeschränkt zu nutzen, inklusive und ohne Ausnahme mit dem Recht, sie zu verwenden, zu kopieren, zu verändern, zusammenzufügen, zu veröffentlichen, zu verbreiten, zu unterlizenzieren und/oder zu verkaufen, und Personen, denen diese Software überlassen wird, diese Rechte zu verschaffen, unter den folgenden Bedingungen:</p>
+                
+                <p>Der obige Urheberrechtsvermerk und dieser Erlaubnisvermerk sind in allen Kopien oder Teilkopien der Software beizulegen.</p>
+                
+                <p><strong>DIE SOFTWARE WIRD OHNE JEDE AUSDRÜCKLICHE ODER IMPLIZIERTE GARANTIE BEREITGESTELLT, EINSCHLIEßLICH DER GARANTIE ZUR GEBRAUCHSTAUGLICHKEIT, EIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND NICHTVERLETZUNG VON RECHTEN DRITTER.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* ========================================
+         * FOOTER STYLES
+         * ======================================== */
+        .app-footer {
+            margin-top: 4rem;
+            padding: 2rem 0 1rem;
+            background: linear-gradient(135deg, 
+                var(--primary-color) 0%, 
+                var(--secondary-color) 100%);
+            color: white;
+            border-top: 3px solid rgba(255,255,255,0.2);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-left, .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .copyright {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .copyright i {
+            color: #4CAF50;
+            margin-right: 0.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            opacity: 0.9;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.9rem;
+            padding: 0.25rem 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+        }
+
+        .license-info, .version-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .license-info i {
+            color: #FFC107;
+        }
+
+        .version-info i {
+            color: #2196F3;
+        }
+
+        .footer-links {
+            max-width: 1400px;
+            margin: 1.5rem auto 0;
+            padding: 1rem 2rem 0;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .footer-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(3px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .license-text {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .license-text p {
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 2% auto;
+                padding: 1rem;
+            }
+        }
+
+        /* Dark Mode */
+        [data-theme="dark"] .modal-content {
+            background-color: var(--card-background);
+            color: var(--text-color);
+        }
+
+        [data-theme="dark"] .license-text {
+            color: var(--text-color);
+        }
+    </style>
+
+    <script>
+        function showLicenseModal() {
+            document.getElementById('licenseModal').style.display = 'block';
+        }
+
+        function closeLicenseModal() {
+            document.getElementById('licenseModal').style.display = 'none';
+        }
+
+        // Modal schließen beim Klick außerhalb
+        window.onclick = function(event) {
+            const modal = document.getElementById('licenseModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
 </body>
 </html>
