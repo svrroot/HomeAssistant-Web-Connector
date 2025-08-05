@@ -5,9 +5,8 @@ mb_internal_encoding('UTF-8');
 mb_http_output('UTF-8');
 ini_set('default_charset', 'utf-8');
 
-$ha_url = "http://10.11.12.33:8123/api/states";
-$ha_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhZjQ4MTBlNWYxZjY0NmM5OThlYTIxZjNiMjJhYTNhYyIsImlhdCI6MTc1NDI5NDg4MCwiZXhwIjoyMDY5NjU0ODgwfQ.k1I56BrKB5fnV-1lfIwgD3g7kXe4nrwNnp6vIFzmbSI";
-
+$ha_url = "HOMEASSISTANT-IP:PORT/api/states";
+$ha_token = "HOMEASSISTANT-API-KEY"
 // Check if this is an AJAX request for a single sensor
 if (isset($_GET['ajax']) && isset($_GET['entity_id'])) {
     header('Content-Type: application/json; charset=utf-8');
