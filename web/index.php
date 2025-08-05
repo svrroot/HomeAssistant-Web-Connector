@@ -5,9 +5,8 @@ mb_internal_encoding('UTF-8');
 mb_http_output('UTF-8');
 ini_set('default_charset', 'utf-8');
 
-$ha_url = "http://10.11.12.33:8123/api/states";
-$ha_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhZjQ4MTBlNWYxZjY0NmM5OThlYTIxZjNiMjJhYTNhYyIsImlhdCI6MTc1NDI5NDg4MCwiZXhwIjoyMDY5NjU0ODgwfQ.k1I56BrKB5fnV-1lfIwgD3g7kXe4nrwNnp6vIFzmbSI";
-
+$ha_url = "YourHomeAssistantIP:PORT/api/states";
+$ha_token = "HomeASSISTANT-API-KEY "
 // Check if this is an AJAX request for a single sensor
 if (isset($_GET['ajax']) && isset($_GET['entity_id'])) {
     header('Content-Type: application/json; charset=utf-8');
@@ -81,7 +80,7 @@ if(file_exists($config_file)) {
     }
 }
 
-// Sprachunterstützung
+// SprachunterstÃ¼tzung
 $language = isset($_GET['lang']) ? $_GET['lang'] : 'de';
 
 $texts = [
@@ -93,7 +92,7 @@ $texts = [
         'dark_mode' => 'Dunkler Modus',
         'no_data' => 'Keine Daten',
         'error' => 'Fehler',
-        'loading' => 'Lädt...',
+        'loading' => 'LÃ¤dt...',
         'admin_panel' => 'Admin Panel'
     ],
     'en' => [
@@ -143,7 +142,7 @@ if (!empty($category_order)) {
         }
     }
     
-    // Dann noch nicht definierte Kategorien anhängen
+    // Dann noch nicht definierte Kategorien anhÃ¤ngen
     foreach ($sensors_by_category as $category => $sensors) {
         if (!isset($ordered_categories[$category])) {
             $ordered_categories[$category] = $sensors;
@@ -242,7 +241,7 @@ if (!empty($category_order)) {
         }
 
         .container {
-            max-width: 1400px; /* Erweitert für 4 Kacheln */
+            max-width: 1400px; /* Erweitert fÃ¼r 4 Kacheln */
             margin: 0 auto;
             padding: 0 1rem;
         }
@@ -282,7 +281,7 @@ if (!empty($category_order)) {
             gap: 1.5rem;
         }
 
-        /* Responsive Breakpoints für 4-Spalten-Layout */
+        /* Responsive Breakpoints fÃ¼r 4-Spalten-Layout */
         @media (max-width: 1400px) {
             .sensors-grid {
                 grid-template-columns: repeat(3, 1fr); /* 3 Spalten bei mittleren Bildschirmen */
@@ -305,14 +304,14 @@ if (!empty($category_order)) {
         .sensor-card {
             background: var(--surface-color);
             border-radius: 20px;
-            padding: 1.8rem; /* Leicht reduziert für 4 Kacheln */
+            padding: 1.8rem; /* Leicht reduziert fÃ¼r 4 Kacheln */
             box-shadow: 0 8px 32px rgba(0,0,0,0.1);
             border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            min-height: 280px; /* Einheitliche Höhe */
+            min-height: 280px; /* Einheitliche HÃ¶he */
         }
 
         .sensor-card:hover {
@@ -338,7 +337,7 @@ if (!empty($category_order)) {
         }
 
         .sensor-info h3 {
-            font-size: 1.1rem; /* Leicht kleiner für 4 Kacheln */
+            font-size: 1.1rem; /* Leicht kleiner fÃ¼r 4 Kacheln */
             margin-bottom: 0.5rem;
             color: var(--on-surface-color);
             line-height: 1.3;
@@ -363,7 +362,7 @@ if (!empty($category_order)) {
         }
 
         .sensor-value .value {
-            font-size: 2.5rem; /* Etwas kleiner für 4 Kacheln */
+            font-size: 2.5rem; /* Etwas kleiner fÃ¼r 4 Kacheln */
             font-weight: 300;
             color: var(--primary-color);
             display: block;
