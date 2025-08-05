@@ -693,7 +693,7 @@ if (!empty($category_order)) {
         </div>
         
         <div class="footer-links">
-            <a href="https://github.com/svrroot/svrroot-php-HomeAssistant-Dashboard" target="_blank" class="footer-link">
+            <a href="https://github.com/svrroot/HomeAssistant-Web-Connector" target="_blank" class="footer-link">
                 <i class="fab fa-github"></i> Source Code
             </a>
             <a href="admin.php" class="footer-link">
@@ -712,7 +712,7 @@ if (!empty($category_order)) {
             <h2><i class="fab fa-osi"></i> MIT Open Source Lizenz</h2>
             <div class="license-text">
                 <p><strong>Home Assistant Sensor Connector</strong></p>
-                <p>Copyright (c) <?php echo date('Y'); ?> Roman Poeller-Six</p>
+                <p>Copyright (c) <?php echo date('Y'); ?> YOUR NAME </p>
                 
                 <p>Hiermit wird unentgeltlich jeder Person, die eine Kopie der Software und der zugehörigen Dokumentationen (die "Software") erhält, die Erlaubnis erteilt, sie uneingeschränkt zu nutzen, inklusive und ohne Ausnahme mit dem Recht, sie zu verwenden, zu kopieren, zu verändern, zusammenzufügen, zu veröffentlichen, zu verbreiten, zu unterlizenzieren und/oder zu verkaufen, und Personen, denen diese Software überlassen wird, diese Rechte zu verschaffen, unter den folgenden Bedingungen:</p>
                 
